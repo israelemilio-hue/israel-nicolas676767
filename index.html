@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro em Etapas Acessível</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1 id="form-title">Cadastro de Usuário</h1>
+    
+    <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3" aria-label="Progresso do cadastro">
+      <span id="step-indicator">Etapa 1 de 3</span>
+    </div>
+
+    <form id="multi-step-form" aria-labelledby="form-title" novalidate>
+      <fieldset class="form-step active" id="step-1">
+        <legend>Dados Pessoais</legend>
+        
+        <div class="form-group">
+          <label for="nome">Nome Completo</label>
+          <input type="text" id="nome" name="nome" required aria-required="true">
+          <span class="error-message" id="error-nome" aria-live="polite"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required aria-required="true">
+          <span class="error-message" id="error-email" aria-live="polite"></span>
+        </div>
+
+        <button type="button" class="btn btn-next">Próximo</button>
+      </fieldset>
+
+      <fieldset class="form-step" id="step-2" hidden>
+        <legend>Segurança da Conta</legend>
+
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" minlength="8" required aria-required="true">
+          <span class="error-message" id="error-senha" aria-live="polite"></span>
+        </div>
+
+        <div class="button-group">
+          <button type="button" class="btn btn-prev">Voltar</button>
+          <button type="button" class="btn btn-next">Próximo</button>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-step" id="step-3" hidden>
+        <legend>Confirmação</legend>
+        <p>Revise suas informações e confirme o envio do formulário.</p>
+
+        <div class="button-group">
+          <button type="button" class="btn btn-prev">Voltar</button>
+          <button type="submit" class="btn btn-submit">Finalizar Cadastro</button>
+        </div>
+      </fieldset>
+    </form>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
