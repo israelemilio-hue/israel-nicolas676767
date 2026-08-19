@@ -70,5 +70,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('CEP válido:', cepInput.value);
     // Aqui você adicionará o redirecionamento para a Etapa 3 quando criá-la
+    
   });
 });
+
+// Elementos da Etapa 3
+  const step3 = document.getElementById('step-3');
+  const phoneInput = document.getElementById('phoneInput');
+  const btnStep3 = document.getElementById('btnStep3');
+  const btnBackStep3 = document.getElementById('btnBackStep3');
+
+  // Atualização no botão da Etapa 2 para redirecionar para a Etapa 3
+  btnStep2.addEventListener('click', () => {
+    const rawValue = cepInput.value.replace(/\D/g, '');
+
+    if (rawValue.length !== 8) {
+      cepInput.focus();
+      cepInput.style.borderColor = '#dc2626';
+      return;
+    }
+
+    goToStep(step2, step3);
+  });
+
+  // ================= LÓGICA DA ETAPA 3 =================
+  // Máscara dinâmica para o Telefone: (00) 00000-0000
+  phoneInput.addEventListener('input', (e) => {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 11) value = value.slice(0, 11);
+
+    if (value.length > 6) {
+      value = value.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+    } else if (value.length > 2) {
+      value = value.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+    } else if (value.length > 0) {
+      value = value.replace(/^(\d{0,2})/, '($1');
+    }
+
+    e.target.value = value;
+    phoneInput.style.borderColor = '#cbd5e1';
+  });
+
+  // Voltar da Etapa 3 para a Etapa 2
+  btnBackStep3.addEventListener('click', () => {
+    goToStep(step3, step2);
+  });
+
+  // Avançar da Etapa 3 para a Etapa 4
+  btnStep3.addEventListener('click', () => {
+    const rawValue = phoneInput.value.replace(/\D/g, '');
+
+    if (rawValue.length < 10) { // Aceita números com DDD (mínimo 10 dígitos)
+      phoneInput.focus();
+      phoneInput.style.borderColor = '#dc2626';
+      return;
+    }
+
+    console.log('Telefone válido inserido:', phoneInput.value);
+    // Próximo passo: goToStep(step3, step4);
+  });

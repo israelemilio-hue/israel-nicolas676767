@@ -111,6 +111,57 @@
   <!-- Botão Flutuante de Ajuda (Único) -->
   <button type="button" class="help-btn" aria-label="Central de ajuda e suporte">?</button>
 
+  <!-- ================= ETAPA 3 ================= -->
+<section class="step-page" id="step-3">
+  <main class="container">
+    <!-- Cabeçalho de Progresso -->
+    <div class="progress-header">
+      <div class="progress-labels">
+        <span class="step-indicator">ETAPA 3 DE 4</span>
+        <span class="step-title">Seu Telefone</span>
+      </div>
+      
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" style="width: 75%;"></div>
+      </div>
+
+      <div class="stepper step-3">
+        <div class="step-node completed">&#10003;</div>
+        <div class="step-node completed">&#10003;</div>
+        <div class="step-node active">3</div>
+        <div class="step-node">4</div>
+      </div>
+    </div>
+
+    <!-- Conteúdo do Formulário -->
+    <div class="form-section">
+      <h1 class="form-title">Qual é o seu número de telefone?</h1>
+      
+      <div class="input-container">
+        <input 
+          type="tel" 
+          id="phoneInput" 
+          class="custom-input" 
+          placeholder="(11) 91234-5678" 
+          maxlength="15"
+          inputmode="numeric"
+          aria-describedby="helper-text-3"
+        >
+        <p id="helper-text-3" class="helper-text">Exemplo: (11) 91234-5678 — com DDD</p>
+      </div>
+
+      <div class="button-group">
+        <button type="button" id="btnStep3" class="btn-primary">
+          Avançar para e-mail &rarr;
+        </button>
+        <button type="button" id="btnBackStep3" class="btn-secondary">
+          &larr; Voltar para etapa anterior
+        </button>
+      </div>
+    </div>
+  </main>
+</section>
+
   <script src="main.js"></script>
 </body>
 </html>
