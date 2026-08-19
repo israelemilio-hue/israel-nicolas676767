@@ -1,66 +1,65 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const steps = Array.from(document.querySelectorAll('.form-step'));
-  const nextBtns = document.querySelectorAll('.btn-next');
-  const prevBtns = document.querySelectorAll('.btn-prev');
-  const form = document.getElementById('multi-step-form');
-  const stepIndicator = document.getElementById('step-indicator');
-  const progressBar = document.querySelector('.progress-bar');
-  let currentStep = 0;
+  const input = document.getElementById('fullName');
+  const nextBtn = document.getElementById('nextBtn');
 
-  function updateStep(targetIndex) {
-    steps[currentStep].hidden = true;
-    steps[currentStep].classList.remove('active');
+  nextBtn.addEventListener('click', () => {
+    const name = input.value.trim();
 
-    currentStep = targetIndex;
-
-    steps[currentStep].hidden = false;
-    steps[currentStep].classList.add('active');
-
-    const stepNumber = currentStep + 1;
-    stepIndicator.textContent = `Etapa ${stepNumber} de ${steps.length}`;
-    progressBar.setAttribute('aria-valuenow', stepNumber);
-
-    const firstInput = steps[currentStep].querySelector('input, button');
-    if (firstInput) firstInput.focus();
-  }
-
-  function validateStep(stepIndex) {
-    const inputs = Array.from(steps[stepIndex].querySelectorAll('input'));
-    let isValid = true;
-
-    inputs.forEach((input) => {
-      const errorSpan = document.getElementById(`error-${input.id}`);
-      if (!input.checkValidity()) {
-        isValid = false;
-        if (errorSpan) errorSpan.textContent = 'Por favor, preencha este campo corretamente.';
-      } else {
-        if (errorSpan) errorSpan.textContent = '';
-      }
-    });
-
-    return isValid;
-  }
-
-  nextBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      if (validateStep(currentStep)) {
-        updateStep(currentStep + 1);
-      }
-    });
-  });
-
-  prevBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      updateStep(currentStep - 1);
-    });
-  });
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (validateStep(currentStep)) {
-      alert('Cadastro concluído com sucesso!');
-      form.reset();
-      updateStep(0);
+    if (!name) {
+      input.focus();
+      input.style.borderColor = '#dc2626';
+      return;
     }
+
+    // Avançar para a próxima etapa do formulário
+    console.log('Nome inserido:', name);
+  });
+
+  input.addEventListener('input', () => {
+    if (input.value.trim()) {
+      input.style.borderColor = '#1d4ed8';
+    }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cepInput = document.getElementById('cepInput');
+  const nextBtn = document.getElementById('nextBtn');
+  const backBtn = document.getElementById('backBtn');
+
+  // Máscara dinâmica para o formato de CEP (00000-000)
+  cepInput.addEventListener('input', (e) => {
+    let value = e.target.value.replace(/\D/g, '');
+    
+    if (value.length > 8) {
+      value = value.slice(0, 8);
+    }
+
+    if (value.length > 5) {
+      value = value.replace(/^(\d{5})(\d)/, '$1-$2');
+    }
+
+    e.target.value = value;
+    cepInput.style.borderColor = '#cbd5e1';
+  });
+
+  // Botão de voltar
+  backBtn.addEventListener('click', () => {
+    // Ação para retornar à etapa anterior
+    console.log('Navegando para Etapa 1');
+  });
+
+  // Botão de avançar com validação
+  nextBtn.addEventListener('click', () => {
+    const rawValue = cepInput.value.replace(/\D/g, '');
+
+    if (rawValue.length !== 8) {
+      cepInput.focus();
+      cepInput.style.borderColor = '#dc2626';
+      return;
+    }
+
+    console.log('CEP válido inserido:', cepInput.value);
+    // Navegar para Etapa 3
   });
 });
