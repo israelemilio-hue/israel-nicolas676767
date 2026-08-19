@@ -1,5 +1,4 @@
-** 
- * {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -93,6 +92,10 @@ body {
 
 .stepper.step-2::before {
   background: linear-gradient(to right, #1d4ed8 33%, #cbd5e1 33%);
+}
+
+.stepper.step-3::before {
+  background: linear-gradient(to right, #1d4ed8 66%, #cbd5e1 66%);
 }
 
 .step-node {
@@ -221,6 +224,4 @@ body {
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}.stepper.step-3::before {
-  background: linear-gradient(to right, #1d4ed8 66%, #cbd5e1 66%);
 }
