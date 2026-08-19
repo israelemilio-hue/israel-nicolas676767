@@ -226,4 +226,58 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }.stepper.step-4::before {
   background-color: #1d4ed8;
+}/* Tela de Sucesso */
+.success-container {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.success-icon-wrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 32px auto;
+}
+
+.success-icon-circle {
+  width: 80px;
+  height: 80px;
+  background-color: #dcfce7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-icon {
+  width: 40px;
+  height: 40px;
+  color: #16a34a;
+}
+
+.success-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 24px;
+  height: 24px;
+  background-color: #10b981;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-badge svg {
+  width: 12px;
+  height: 12px;
+  color: #ffffff;
+}
+
+.success-description {
+  font-size: 15px;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 32px;
 }
