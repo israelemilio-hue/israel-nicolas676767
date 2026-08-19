@@ -1,4 +1,5 @@
 ** {
+ * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -12,6 +13,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Controle de Exibição das Etapas */
+.step-page {
+  display: none;
+  width: 100%;
+}
+
+.step-page.active {
+  display: flex;
+  justify-content: center;
 }
 
 .container {
@@ -56,10 +68,10 @@ body {
 }
 
 .progress-bar-fill {
-  width: 25%;
   height: 100%;
   background-color: #1d4ed8;
   border-radius: 2px;
+  transition: width 0.3s ease;
 }
 
 .stepper {
@@ -79,6 +91,10 @@ body {
   z-index: 1;
 }
 
+.stepper.step-2::before {
+  background: linear-gradient(to right, #1d4ed8 33%, #cbd5e1 33%);
+}
+
 .step-node {
   width: 28px;
   height: 28px;
@@ -93,7 +109,8 @@ body {
   z-index: 2;
 }
 
-.step-node.active {
+.step-node.active,
+.step-node.completed {
   background-color: #1d4ed8;
   color: #ffffff;
 }
@@ -145,7 +162,15 @@ body {
   margin-left: 2px;
 }
 
-/* Botão Avançar */
+/* Botões */
+.button-group {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .btn-primary {
   width: 100%;
   max-width: 320px;
@@ -162,6 +187,23 @@ body {
 
 .btn-primary:hover {
   background-color: #1e40af;
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 16px 24px;
+  background-color: #e2e8f0;
+  color: #334155;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #cbd5e1;
 }
 
 /* Botão de Suporte Flutuante */

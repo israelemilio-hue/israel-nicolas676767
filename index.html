@@ -3,105 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro - Etapa 1 de 4</title>
+  <title>Formulário de Cadastro</title>
   <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
-  <main class="container">
-    <!-- Cabeçalho de Progresso -->
-    <div class="progress-header">
-      <div class="progress-labels">
-        <span class="step-indicator">ETAPA 1 DE 4</span>
-        <span class="step-title">Seu Nome</span>
-      </div>
-      
-      <div class="progress-bar-bg">
-        <div class="progress-bar-fill"></div>
-      </div>
+  <form id="multiStepForm" onsubmit="return false;">
 
-      <div class="stepper">
-        <div class="step-node active">1</div>
-        <div class="step-node">2</div>
-        <div class="step-node">3</div>
-        <div class="step-node">4</div>
-      </div>
-    </div>
+    <!-- ================= ETAPA 1 ================= -->
+    <section class="step-page active" id="step-1">
+      <main class="container">
+        <!-- Cabeçalho de Progresso -->
+        <div class="progress-header">
+          <div class="progress-labels">
+            <span class="step-indicator">ETAPA 1 DE 4</span>
+            <span class="step-title">Seu Nome</span>
+          </div>
+          
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" style="width: 25%;"></div>
+          </div>
 
-    <!-- Formulário Principal -->
-    <section class="form-section">
-      <h1 class="form-title">Qual é o seu nome completo?</h1>
-      
-      <div class="input-container">
-        <input 
-          type="text" 
-          id="fullName" 
-          class="custom-input" 
-          placeholder="Maria Oliveira da Silva" 
-          aria-describedby="helper-text"
-          autocomplete="name"
-        >
-        <p id="helper-text" class="helper-text">Exemplo: Maria Oliveira da Silva</p>
-      </div>
+          <div class="stepper step-1">
+            <div class="step-node active">1</div>
+            <div class="step-node">2</div>
+            <div class="step-node">3</div>
+            <div class="step-node">4</div>
+          </div>
+        </div>
 
-      <button type="button" id="nextBtn" class="btn-primary">
-        Avançar para endereço &rarr;
-      </button>
+        <!-- Conteúdo do Formulário -->
+        <div class="form-section">
+          <h1 class="form-title">Qual é o seu nome completo?</h1>
+          
+          <div class="input-container">
+            <input 
+              type="text" 
+              id="fullName" 
+              class="custom-input" 
+              placeholder="Maria Oliveira da Silva" 
+              aria-describedby="helper-text-1"
+              autocomplete="name"
+            >
+            <p id="helper-text-1" class="helper-text">Exemplo: Maria Oliveira da Silva</p>
+          </div>
+
+          <button type="button" id="btnStep1" class="btn-primary">
+            Avançar para endereço &rarr;
+          </button>
+        </div>
+      </main>
     </section>
-  </main>
 
-  <!-- Botão Flutuante de Ajuda -->
-  <button type="button" class="help-btn" aria-label="Central de ajuda e suporte">?</button>
+    <!-- ================= ETAPA 2 ================= -->
+    <section class="step-page" id="step-2">
+      <main class="container">
+        <!-- Cabeçalho de Progresso -->
+        <div class="progress-header">
+          <div class="progress-labels">
+            <span class="step-indicator">ETAPA 2 DE 4</span>
+            <span class="step-title">Seu Endereço</span>
+          </div>
+          
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" style="width: 50%;"></div>
+          </div>
 
-  <main class="container">
-    <!-- Cabeçalho de Progresso -->
-    <div class="progress-header">
-      <div class="progress-labels">
-        <span class="step-indicator">ETAPA 2 DE 4</span>
-        <span class="step-title">Seu Endereço</span>
-      </div>
-      
-      <div class="progress-bar-bg">
-        <div class="progress-bar-fill" style="width: 50%;"></div>
-      </div>
+          <div class="stepper step-2">
+            <div class="step-node completed">&#10003;</div>
+            <div class="step-node active">2</div>
+            <div class="step-node">3</div>
+            <div class="step-node">4</div>
+          </div>
+        </div>
 
-      <div class="stepper step-2">
-        <div class="step-node completed">&#10003;</div>
-        <div class="step-node active">2</div>
-        <div class="step-node">3</div>
-        <div class="step-node">4</div>
-      </div>
-    </div>
+        <!-- Conteúdo do Formulário -->
+        <div class="form-section">
+          <h1 class="form-title">Qual é o seu CEP?</h1>
+          
+          <div class="input-container">
+            <input 
+              type="text" 
+              id="cepInput" 
+              class="custom-input" 
+              placeholder="01234-567" 
+              maxlength="9"
+              inputmode="numeric"
+              aria-describedby="helper-text-2"
+            >
+            <p id="helper-text-2" class="helper-text">Exemplo: 01234-567</p>
+          </div>
 
-    <!-- Formulário Principal -->
-    <section class="form-section">
-      <h1 class="form-title">Qual é o seu CEP?</h1>
-      
-      <div class="input-container">
-        <input 
-          type="text" 
-          id="cepInput" 
-          class="custom-input" 
-          placeholder="01234-567" 
-          maxlength="9"
-          inputmode="numeric"
-          aria-describedby="helper-text"
-        >
-        <p id="helper-text" class="helper-text">Exemplo: 01234-567</p>
-      </div>
-
-      <div class="button-group">
-        <button type="button" id="nextBtn" class="btn-primary">
-          Avançar para telefone &rarr;
-        </button>
-        <button type="button" id="backBtn" class="btn-secondary">
-          &larr; Voltar para etapa anterior
-        </button>
-      </div>
+          <div class="button-group">
+            <button type="button" id="btnStep2" class="btn-primary">
+              Avançar para telefone &rarr;
+            </button>
+            <button type="button" id="btnBackStep2" class="btn-secondary">
+              &larr; Voltar para etapa anterior
+            </button>
+          </div>
+        </div>
+      </main>
     </section>
-  </main>
 
-  <!-- Botão Flutuante de Ajuda -->
+  </form>
+
+  <!-- Botão Flutuante de Ajuda (Único) -->
   <button type="button" class="help-btn" aria-label="Central de ajuda e suporte">?</button>
 
   <script src="main.js"></script>

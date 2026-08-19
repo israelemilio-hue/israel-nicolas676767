@@ -1,33 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const input = document.getElementById('fullName');
-  const nextBtn = document.getElementById('nextBtn');
+  // Elementos da Etapa 1
+  const step1 = document.getElementById('step-1');
+  const fullNameInput = document.getElementById('fullName');
+  const btnStep1 = document.getElementById('btnStep1');
 
-  nextBtn.addEventListener('click', () => {
-    const name = input.value.trim();
+  // Elementos da Etapa 2
+  const step2 = document.getElementById('step-2');
+  const cepInput = document.getElementById('cepInput');
+  const btnStep2 = document.getElementById('btnStep2');
+  const btnBackStep2 = document.getElementById('btnBackStep2');
+
+  // Função para alternar a exibição entre as etapas
+  function goToStep(currentStep, nextStep) {
+    currentStep.classList.remove('active');
+    nextStep.classList.add('active');
+  }
+
+  // ================= LÓGICA DA ETAPA 1 =================
+  btnStep1.addEventListener('click', () => {
+    const name = fullNameInput.value.trim();
 
     if (!name) {
-      input.focus();
-      input.style.borderColor = '#dc2626';
+      fullNameInput.focus();
+      fullNameInput.style.borderColor = '#dc2626';
       return;
     }
 
-    // Avançar para a próxima etapa do formulário
-    console.log('Nome inserido:', name);
+    // Avança para a Etapa 2
+    goToStep(step1, step2);
   });
 
-  input.addEventListener('input', () => {
-    if (input.value.trim()) {
-      input.style.borderColor = '#1d4ed8';
+  fullNameInput.addEventListener('input', () => {
+    if (fullNameInput.value.trim()) {
+      fullNameInput.style.borderColor = '#cbd5e1';
     }
   });
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-  const cepInput = document.getElementById('cepInput');
-  const nextBtn = document.getElementById('nextBtn');
-  const backBtn = document.getElementById('backBtn');
-
-  // Máscara dinâmica para o formato de CEP (00000-000)
+  // ================= LÓGICA DA ETAPA 2 =================
+  // Máscara dinâmica para o CEP (00000-000)
   cepInput.addEventListener('input', (e) => {
     let value = e.target.value.replace(/\D/g, '');
     
@@ -43,14 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
     cepInput.style.borderColor = '#cbd5e1';
   });
 
-  // Botão de voltar
-  backBtn.addEventListener('click', () => {
-    // Ação para retornar à etapa anterior
-    console.log('Navegando para Etapa 1');
+  // Voltar da Etapa 2 para a Etapa 1
+  btnBackStep2.addEventListener('click', () => {
+    goToStep(step2, step1);
   });
 
-  // Botão de avançar com validação
-  nextBtn.addEventListener('click', () => {
+  // Avançar da Etapa 2 para a Etapa 3
+  btnStep2.addEventListener('click', () => {
     const rawValue = cepInput.value.replace(/\D/g, '');
 
     if (rawValue.length !== 8) {
@@ -59,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    console.log('CEP válido inserido:', cepInput.value);
-    // Navegar para Etapa 3
+    console.log('CEP válido:', cepInput.value);
+    // Aqui você adicionará o redirecionamento para a Etapa 3 quando criá-la
   });
 });
