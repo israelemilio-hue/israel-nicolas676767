@@ -162,6 +162,56 @@
   <!-- Botão Flutuante de Ajuda -->
   <button type="button" class="help-btn" aria-label="Central de ajuda e suporte">?</button>
 
+  <!-- ================= ETAPA 4 ================= -->
+<section class="step-page" id="step-4">
+  <main class="container">
+    <!-- Cabeçalho de Progresso -->
+    <div class="progress-header">
+      <div class="progress-labels">
+        <span class="step-indicator">ETAPA 4 DE 4</span>
+        <span class="step-title">Seu E-mail</span>
+      </div>
+      
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" style="width: 100%;"></div>
+      </div>
+
+      <div class="stepper step-4">
+        <div class="step-node completed">&#10003;</div>
+        <div class="step-node completed">&#10003;</div>
+        <div class="step-node completed">&#10003;</div>
+        <div class="step-node active">4</div>
+      </div>
+    </div>
+
+    <!-- Conteúdo do Formulário -->
+    <div class="form-section">
+      <h1 class="form-title">Qual é o seu endereço de e-mail?</h1>
+      
+      <div class="input-container">
+        <input 
+          type="email" 
+          id="emailInput" 
+          class="custom-input" 
+          placeholder="maria@email.com" 
+          autocomplete="email"
+          aria-describedby="helper-text-4"
+        >
+        <p id="helper-text-4" class="helper-text">Exemplo: maria@email.com — o e-mail que você usa</p>
+      </div>
+
+      <div class="button-group">
+        <button type="submit" id="btnSubmit" class="btn-primary">
+          Concluir cadastro &rarr;
+        </button>
+        <button type="button" id="btnBackStep4" class="btn-secondary">
+          &larr; Voltar para etapa anterior
+        </button>
+      </div>
+    </div>
+  </main>
+</section>
+
   <script src="main.js"></script>
 </body>
 </html>
